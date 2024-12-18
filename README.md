@@ -1,3 +1,3 @@
-# Mobile Native Apllication Development Coursework
+# Mobile Native Application Development Coursework
 
 This app is a simplistic recreation of the Apple IOS default weather app.
