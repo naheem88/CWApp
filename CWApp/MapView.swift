@@ -6,13 +6,17 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct MapView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    @EnvironmentObject var viewModel: ViewModel
+    @Binding var selectedCity: City?
 
-#Preview {
-    MapView()
+    var body: some View {
+        Map(selection: $selectedCity) {
+            ForEach(Array(viewModel.selectedCities)) { city in
+                Marker(city.name, coordinate: city.coordinate)
+            }
+        }
+    }
 }
