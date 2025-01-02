@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct SelectedCountryView: View {
-    @Binding var selectedCity: City?
-
     var body: some View {
             
             ScrollView (showsIndicators: false) {
                 VStack {
-                    Text("Colombo")
+                    Text("")
                         .font(.largeTitle)
                     Text("29°")
                         .font(.system(size: 80, weight: .light))
@@ -148,9 +146,4 @@ struct SelectedCountryView: View {
         .background(Color(red: 0.18, green: 0.22, blue: 0.48).opacity(0.5))
         .cornerRadius(10)
     }
-}
-
-
-#Preview {
-    SelectedCountryView(selectedCity: .constant(City.bristol))
 }

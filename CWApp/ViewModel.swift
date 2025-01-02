@@ -8,8 +8,10 @@
 import Foundation
 import CoreLocation
 
+
 class ViewModel: ObservableObject {
     @Published var selectedCities: Set<City> = []
+    @Published var allCities: Set<City> = City.defaultCities
     @Published var coordinate: CLLocationCoordinate2D? = nil
     @Published var geocodingError: Error? = nil
     
@@ -24,6 +26,12 @@ class ViewModel: ObservableObject {
                 } else if let coordinate = placemarks?.first?.location?.coordinate {
                     self?.coordinate = coordinate
                     self?.geocodingError = nil
+                    
+                    let city = City(name: address, coordinate: coordinate)
+                    
+                    if !(self?.allCities.contains(city) ?? false) {
+                        self?.allCities.insert(city)
+                    }
                 }
             }
         }

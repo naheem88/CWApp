@@ -1,64 +1,46 @@
-enum City: Identifiable, CaseIterable {
-    case newYork, london, bristol, manchester, amsterdam, perth, colombo, dubai
+//
+//  City.swift
+//  CWApp
+//
+//  Created by Thuan Naheem Pakeer on 2024-12-23.
+//
 
-    var id: Self {
-        self
-    }
+import Foundation
+import MapKit
 
-    var name: String {
-        switch self {
-        case .newYork: return "New York"
-        case .london: return "London"
-        case .bristol: return "Bristol"
-        case .manchester: return "Manchester"
-        case .amsterdam: return "Amsterdam"
-        case .perth: return "Perth"
-        case .colombo: return "Colombo"
-        case .dubai: return "Dubai"
+struct City: Identifiable, Hashable {
+    let id = UUID()
+    var name: String
+    var coordinate: CLLocationCoordinate2D
+    
+    
+    func hash(into hasher: inout Hasher) {
+            hasher.combine(name)
+            hasher.combine(coordinate.latitude)
+            hasher.combine(coordinate.longitude)
         }
-    }
-
-    var coordinate: CLLocationCoordinate2D {
-        switch self {
-        case .newYork:
-            return CLLocationCoordinate2D(latitude: 40.7127, longitude: -74.0059)
-        case .london:
-            return CLLocationCoordinate2D(latitude: 51.5074, longitude: -0.1277)
-        case .bristol:
-            return CLLocationCoordinate2D(latitude: 51.4573, longitude: -2.5972)
-        case .manchester:
-            return CLLocationCoordinate2D(latitude: 53.4778, longitude: -2.2476)
-        case .amsterdam:
-            return CLLocationCoordinate2D(latitude: 52.3702, longitude: 4.8952)
-        case .perth:
-            return CLLocationCoordinate2D(latitude: -31.9501, longitude: 115.8601)
-        case .colombo:
-            return CLLocationCoordinate2D(latitude: 6.9271, longitude: 79.8616)
-        case .dubai:
-            return CLLocationCoordinate2D(latitude: 25.2041, longitude: 55.2778)
+        
+        static func == (lhs: City, rhs: City) -> Bool {
+            return lhs.name == rhs.name &&
+                   lhs.coordinate.latitude == rhs.coordinate.latitude &&
+                   lhs.coordinate.longitude == rhs.coordinate.longitude
         }
-    }
     
     init(name: String, coordinate: CLLocationCoordinate2D) {
-            switch name.lowercased() {
-            case "new york":
-                self = .newYork
-            case "london":
-                self = .london
-            case "bristol":
-                self = .bristol
-            case "manchester":
-                self = .manchester
-            case "amsterdam":
-                self = .amsterdam
-            case "perth":
-                self = .perth
-            case "colombo":
-                self = .colombo
-            case "dubai":
-                self = .dubai
-            default:
-                self = .newYork
-            }
+            self.name = name
+            self.coordinate = coordinate
+        }
+    
+    static var defaultCities: Set<City> {
+            return Set([
+                City(name: "New York", coordinate: CLLocationCoordinate2D(latitude: 40.7127, longitude: -74.0059)),
+                City(name: "London", coordinate: CLLocationCoordinate2D(latitude: 51.5074, longitude: -0.1277)),
+                City(name: "Bristol", coordinate: CLLocationCoordinate2D(latitude: 51.4573, longitude: -2.5972)),
+                City(name: "Manchester", coordinate: CLLocationCoordinate2D(latitude: 53.4778, longitude: -2.2476)),
+                City(name: "Amsterdam", coordinate: CLLocationCoordinate2D(latitude: 52.3702, longitude: 4.8952)),
+                City(name: "Perth", coordinate: CLLocationCoordinate2D(latitude: -31.9501, longitude: 115.8601)),
+                City(name: "Colombo", coordinate: CLLocationCoordinate2D(latitude: 6.9271, longitude: 79.8616)),
+                City(name: "Dubai", coordinate: CLLocationCoordinate2D(latitude: 25.2041, longitude: 55.2778))
+            ])
         }
 }

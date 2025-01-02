@@ -13,12 +13,10 @@ struct FavCountrySelectView : View {
     var body: some View {
         NavigationStack{
             List{
-                ForEach(City.allCases) { city in
+                ForEach(viewModel.allCities.sorted { $0.name < $1.name }, id: \.self) { city in
                     HStack{
                         Text(city.name)
-                        
-                        Spacer()
-                        
+                                                
                         if viewModel.selectedCities.contains(city) {
                             Button {
                                 viewModel.selectedCities.remove(city)
