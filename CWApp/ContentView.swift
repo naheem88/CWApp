@@ -34,7 +34,7 @@ struct ContentView: View {
                     Label("Saved Cities", systemImage: "globe")
                 }
         }
-        .tint(.green.opacity(0.9))
+        .tint(.cyan.opacity(0.9))
     }
 }
 
