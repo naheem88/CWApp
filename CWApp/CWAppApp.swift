@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct CWAppApp: App {
     @StateObject var viewModel = ViewModel()
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()

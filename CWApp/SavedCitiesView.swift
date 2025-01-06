@@ -37,14 +37,16 @@ struct SavedCitiesView: View {
 
                 List {
                     ForEach(Array(viewModel.allCities), id: \.self) { city in
-                        let lat = String(format: "%.4f°", city.coordinate.latitude)
-                        let long = String(format: "%.4f°", city.coordinate.longitude)
-                        
+                        let lat = String(
+                            format: "%.4f°", city.coordinate.latitude)
+                        let long = String(
+                            format: "%.4f°", city.coordinate.longitude)
+
                         HStack {
                             Text(city.name)
                             Text("[\(lat), \(long)]")
                         }
-                        
+
                         .listRowBackground(
                             Color(red: 0.18, green: 0.22, blue: 0.48)
                                 .opacity(0.5)

@@ -84,13 +84,13 @@ struct CurrentWeatherView: View {
     @State private var errorMessage: String? = nil
     let apiKey = "dc148e14224ac9e59cf589447b30c675"
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    
+
     private let dateFormatter: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.dateStyle = .medium
-            return formatter
-        }()
-        
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter
+    }()
+
     private let timeFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.timeStyle = .short
@@ -142,14 +142,14 @@ struct CurrentWeatherView: View {
                                 }
                             }
                         }
-                        
+
                         HStack(spacing: 4) {
                             Text(dateFormatter.string(from: getCityTime()))
                             Text(timeFormatter.string(from: getCityTime()))
                         }
                         .font(.body)
                         .fontWeight(.medium)
-                        
+
                     }
                     .padding(.bottom)
 
@@ -353,13 +353,13 @@ struct CurrentWeatherView: View {
             isLoading = false
         }
     }
-    
+
     private func getCityTime() -> Date {
         guard let weatherData = weatherData else { return Date() }
-        
+
         let offsetFromUTC = TimeInterval(weatherData.timezone_offset)
         let localUTCOffset = TimeInterval(TimeZone.current.secondsFromGMT())
-        
+
         return Date().addingTimeInterval(offsetFromUTC - localUTCOffset)
     }
 }

@@ -50,7 +50,7 @@ struct SearchView: View {
                 }
             } else if viewModel.geocodingError != nil {
                 viewModel.alertMsg =
-                    "Could not find \(cityName). Please try again or search for another city."
+                    "Could not find \(cityName). Please try again."
                 viewModel.showAlert = true
             }
             cityName = ""

@@ -66,10 +66,10 @@ class ViewModel: ObservableObject {
                         self?.allCities.insert(city)
                         self?.saveCities()
 
-                        self?.alertMsg = "\(properCityName) added to favorites."
+                        self?.alertMsg = "Saved \(properCityName)."
                         self?.showAlert = true
                     } else {
-                        self?.alertMsg = "Already added to favorites."
+                        self?.alertMsg = "Has already been saved."
                         self?.showAlert = true
                     }
                 }
