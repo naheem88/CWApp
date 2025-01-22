@@ -52,7 +52,7 @@ struct DailyWeatherView: View {
     @State private var weatherData: WeatherDTO? = nil
     @State private var isLoading: Bool = false
     @State private var errorMessage: String? = nil
-    let apiKey = "dc148e14224ac9e59cf589447b30c675"
+    let apiKey = ""
 
     var body: some View {
         ZStack {
