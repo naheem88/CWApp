@@ -82,7 +82,7 @@ struct CurrentWeatherView: View {
     @State private var airPollutionData: AirPollutionDTO? = nil
     @State private var isLoading: Bool = false
     @State private var errorMessage: String? = nil
-    let apiKey = "dc148e14224ac9e59cf589447b30c675"
+    let apiKey = ""
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     private let dateFormatter: DateFormatter = {
